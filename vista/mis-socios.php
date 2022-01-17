@@ -1,6 +1,6 @@
 <div class="container-fluid mt-1">
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 table-responsive">
             <table class="table table-striped table-bordered table-hover tableSocios">
                 <thead>
                     <tr>
@@ -111,9 +111,9 @@
             },
             success: function(res) {
                 $("#btnAgregarSocio").attr("disabled", false)
-                    $("#btnAgregarSocio").html(`Agregar`)
+                $("#btnAgregarSocio").html(`Agregar`)
                 if (res.status) {
-                    
+
                     mostrarSocios()
 
                     swal({
@@ -195,9 +195,9 @@
 
                     var boton = "";
                     if (scs.ctas_p == 1) {
-                        boton = `<button class="btn btn-success" type="button">AUTORIZADO</button>`;
+                        boton = `<button class="btn btn-success" id="btn_${scs.ctas_id}"  onclick="auto(0,'${scs.ctas_id}')"  type="button">AUTORIZADO</button>`;
                     } else {
-                        boton = `<button class="btn btn-danger" type="button">DENEGADO</button>`;
+                        boton = `<button class="btn btn-danger" id="btn_${scs.ctas_id}"   onclick="auto(1,'${scs.ctas_id}')"  type="button">DENEGADO</button>`;
                     }
 
                     listaSocios +=
@@ -220,6 +220,39 @@
                 $("#tbodySocios").html(listaSocios);
             }
         })
+    }
+
+    function auto(ctas_p, ctas_id) {
+
+
+        var datos = new FormData();
+
+        datos.append("btnPermisoScocio", true);
+        datos.append("ctas_id", ctas_id);
+        datos.append("ctas_p", ctas_p);
+        $.ajax({
+            type: "POST",
+            url: './ajax/socios.ajax.php',
+            data: datos,
+            cache: false,
+            dataType: "json",
+            processData: false,
+            contentType: false,
+            beforeSend: function() {
+                $("#btn_" + ctas_id).attr("disabled", true);
+
+            },
+            success: function(res) {
+                if (res) {
+                    $("#btn_" + ctas_id).attr("disabled", false);
+                    mostrarSocios()
+
+                }
+            }
+        })
+
+
+
     }
 </script>
 

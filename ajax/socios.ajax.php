@@ -39,6 +39,18 @@ class SociosAjax
         // var_dump($res);
         echo json_encode($res, true);
     }
+    public function ajaxPermisosSocios()
+    {
+        $res = SocioModelo::mdlPermisos($_POST['ctas_id'],$_POST['ctas_p']);
+        
+        echo json_encode($res, true);
+    }
+    public function ajaxEliminarSucursal()
+    {
+        $res = SocioModelo::mdlEliminarSucursal($_POST['scl_id']);
+        
+        echo json_encode($res, true);
+    }
 }
 
 if (isset($_POST['btnAgregarSocio'])) {
@@ -64,3 +76,13 @@ if (isset($_POST['btnGuardarDirecSuc'])) {
     $guadarSucurs = new SociosAjax();
     $guadarSucurs->ajaxGuardarSucusales();
 }
+
+if (isset($_POST['btnPermisoScocio'])) {
+    $permisos = new SociosAjax();
+    $permisos->ajaxPermisosSocios();
+}
+if (isset($_POST['btnEliminarSucursal'])) {
+    $eliminarSuc = new SociosAjax();
+    $eliminarSuc->ajaxEliminarSucursal();
+}
+

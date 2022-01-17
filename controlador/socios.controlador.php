@@ -191,7 +191,7 @@ class SocioControlador
             // Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'Verificación de cuenta';
-            $mail->Body  = 'Da click aquí en el siguiente enlace para terminar tu registro <a href="' . $data['url_base'] . '?registro=true%26token=' . $data['usr_token'] . '" target="_blank" >Terminar mi registro</a> ';
+            $mail->Body  = 'Da click aquí en el siguiente enlace para terminar tu registro <a href="' . $data['url_base'] . '?registro=true&token=' . $data['usr_token'] . '" target="_blank" >Terminar mi registro</a> ';
             $mail->send();
 
             return true;

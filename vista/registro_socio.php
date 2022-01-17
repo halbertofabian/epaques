@@ -114,9 +114,8 @@ $scs_usr = SocioModelo::mdlConsultarSocioByCuentaLimit1($scs_cuenta['ctas_cta'])
                         icon: "success",
                         button: "OK",
                     });
-                    setTimeout(function() {
-                        window.location.href = res.pagina;
-                    }, 200)
+                    window.location.href = res.pagina;
+
                 } else {
                     swal({
                         title: "¡Error!",

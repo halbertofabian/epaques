@@ -277,4 +277,42 @@ class SocioModelo
             $con = null;
         }
     }
+
+    public static function mdlPermisos($ctas_id, $ctas_p)
+    {
+        try {
+            //code...
+            $sql = "UPDATE tbl_cuenta_socio_ctas SET  ctas_p = ? WHERE ctas_id = ?";
+            $con = Conexion::conectar();
+            $pps = $con->prepare($sql);
+            $pps->bindValue(1, $ctas_p);
+            $pps->bindValue(2, $ctas_id);
+            $pps->execute();
+            return $pps->rowCount() > 0;
+        } catch (PDOException $th) {
+            //throw $th;
+            return false;
+        } finally {
+            $pps = null;
+            $con = null;
+        }
+    }
+    public static function mdlEliminarSucursal($scl_id)
+    {
+        try {
+            //code...
+            $sql = "DELETE FROM  tbl_sucursales_scl  WHERE scl_id = ?";
+            $con = Conexion::conectar();
+            $pps = $con->prepare($sql);
+            $pps->bindValue(1, $scl_id);
+            $pps->execute();
+            return $pps->rowCount() > 0;
+        } catch (PDOException $th) {
+            //throw $th;
+            return false;
+        } finally {
+            $pps = null;
+            $con = null;
+        }
+    }
 }
