@@ -15,6 +15,12 @@ class SociosAjax
         // var_dump($res);
         echo json_encode($res, true);
     }
+    public function ajaxAgegarSocioHome()
+    {
+        $res = SocioControlador::ctrAgregarSocioHome($_POST);
+        // var_dump($res);
+        echo json_encode($res, true);
+    }
     public function ajaxMostrarSocios()
     {
         $res = SocioModelo::mdlMostrarCuentasSocios(1, $_SESSION['session_usr']['scs_id']);
@@ -57,6 +63,12 @@ if (isset($_POST['btnAgregarSocio'])) {
     $agregar = new SociosAjax();
     $agregar->ajaxAgegarSocio();
 }
+
+if (isset($_POST['btnAgregarSocioHome'])) {
+    $agregar = new SociosAjax();
+    $agregar->ajaxAgegarSocioHome();
+}
+
 if (isset($_POST['btnMostrarSocios'])) {
     $mostrar = new SociosAjax();
     $mostrar->ajaxMostrarSocios();
@@ -85,4 +97,6 @@ if (isset($_POST['btnEliminarSucursal'])) {
     $eliminarSuc = new SociosAjax();
     $eliminarSuc->ajaxEliminarSucursal();
 }
+
+
 

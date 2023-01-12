@@ -69,8 +69,8 @@
 
 
                         <div class="form-group col-12">
-                            <input type="text" id="scl_lat" name="scl_lat" value="">
-                            <input type="text" id="scl_lon" name="scl_lon" value="">
+                            <input type="hidden" id="scl_lat" name="scl_lat" value="">
+                            <input type="hidden" id="scl_lon" name="scl_lon" value="">
                             <button type="button" class="btn btn-dark float-right ml-1" id="obtenerUbicacion"><i class="fas fa-map-marker-alt"></i> Obtner ubicación</button>
                         </div>
 
@@ -107,7 +107,9 @@
             type: "GET",
             // url: `https://apisgratis.com/api/codigospostales/v2/colonias/cp/?valor=${codigo}`,
             // https://apisgratis.com/api/codigospostales/v2/colonias/cp/?valor=
-            url: `https://api-cp.multiservicios-web.com.mx/query/info_cp/${codigo}?token=cf683454-21ac-40c1-a32f-daaa44796206`,
+
+            
+            url: `https://api.copomex.com/query/info_cp/${codigo}?token=cce80541-b92b-4efc-bf2d-ac745af39085`,
             // data: datos,
             dataType: "json",
             processData: false,
@@ -204,7 +206,7 @@
         $.ajax({
             url: 'https://api.positionstack.com/v1/forward',
             data: {
-                access_key: 'ba77005f7f8d03d860fe6c7213fb69f2',
+                access_key: 'ab852a2b2ebd637b4662c1f8302548ff',
                 query: direccion,
                 output: 'json',
                 limit: 1,

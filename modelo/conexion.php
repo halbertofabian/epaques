@@ -13,6 +13,8 @@ class Conexion
                 "root",
                 ""
             );
+            //e:r9Rre3$K
+            //u203735599_empaques
 
             $link->exec("set names utf8mb4");
 

@@ -222,7 +222,7 @@
 
     </div>
 </div>
-<div class="bbb_viewed">
+<!-- <div class="bbb_viewed">
     <div class="container-fluid">
         <div class="row">
             <div class="col mb-5">
@@ -241,7 +241,7 @@
                                 <div class="bbb_viewed_item d-flex flex-column align-items-center justify-content-center text-center">
                                     <div class="bbb_viewed_image"><img src="https://plastibol.com.mx/wp-content/uploads/2019/07/VITAFILM-VARIAS-MEDIDAS.jpeg" alt=""></div>
                                     <div class="bbb_viewed_content text-center">
-                                        <!-- <div class="bbb_viewed_price">₹30079</div> -->
+                                       
                                         <div class="bbb_viewed_name"><a href="#">Producto 1</a></div>
                                     </div>
                                     <ul class="item_marks">
@@ -254,7 +254,7 @@
                                 <div class="bbb_viewed_item d-flex flex-column align-items-center justify-content-center text-center">
                                     <div class="bbb_viewed_image"><img src="https://cs21.com.mx/wp-content/uploads/2020/08/plastico-adherible-romfilm-1.png" alt=""></div>
                                     <div class="bbb_viewed_content text-center">
-                                        <!-- <div class="bbb_viewed_price">₹30079</div> -->
+                                      
                                         <div class="bbb_viewed_name"><a href="#">Producto 2</a></div>
                                     </div>
                                     <ul class="item_marks">
@@ -267,7 +267,7 @@
                                 <div class="bbb_viewed_item d-flex flex-column align-items-center justify-content-center text-center">
                                     <div class="bbb_viewed_image"><img src="https://peliculaparaemplayar.com/wp-content/uploads/2020/07/STRETCH-FILM-MANUAL.jpg" alt=""></div>
                                     <div class="bbb_viewed_content text-center">
-                                        <!-- <div class="bbb_viewed_price">₹30079</div> -->
+                                      
                                         <div class="bbb_viewed_name"><a href="#">Producto 3</a></div>
                                     </div>
                                     <ul class="item_marks">
@@ -276,34 +276,14 @@
                                     </ul>
                                 </div>
                             </div>
-
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Importancia</h4>
-                        <p class="card-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                    </div>
-                </div>
-            </div> -->
-            <!-- <div class="col-md-6">
-                <div class="card">
-                    
-                    <div class="card-body">
-                        <h4 class="card-title">Casos de uso</h4>
-                        <p class="card-text"></p>
-                    </div>
-                </div>
-            </div> -->
+           
         </div>
     </div>
-</div>
+</div> -->
 <?php
 
 $sucursales = SocioModelo::mdlMostrarSucursales(0);

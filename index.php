@@ -91,15 +91,19 @@ $url_base = "http://localhost/empaques.com/";
   <?php
 
 
-  
+
   // var_dump($_SESSION['session_cta']);
 
+  if (isset($_GET['registro']) && $_GET['registro']) {
+    require_once 'vista/registro_socio.php';
+    die();
+  }
 
   if (isset($_SESSION['session']) && $_SESSION['session']) :
-    if (isset($_GET['registro']) && $_GET['registro']) {
-      require_once 'vista/registro_socio.php';
-      die();
-    }
+  //   if (isset($_GET['registro']) && $_GET['registro']) {
+  //     require_once 'vista/registro_socio.php';
+  //     die();
+  //   }
 
   ?>
     <div class="wrapper">
@@ -250,6 +254,10 @@ $url_base = "http://localhost/empaques.com/";
   <?php
     if (isset($_GET['ruta']) && $_GET['ruta'] == 'system') {
       include_once 'vista/login.php';
+    } else if (isset($_GET['ruta']) && $_GET['ruta'] == 'r') {
+      include_once 'vista/registro_home.php';
+    } else if (isset($_GET['ruta']) && $_GET['ruta'] == 'registro') {
+      include_once 'vista/registro_socio.php';
     } else {
       include_once 'vista/page_home.php';
     }

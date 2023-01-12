@@ -7,8 +7,6 @@ class SocioControlador
 {
     public static function ctrAgregarSocio()
     {
-
-
         // PREGUNTAR SI ES UN CORREO 
         if (!socioControlador::is_valid_email($_POST['scs_correo'])) {
             return array(
@@ -78,6 +76,78 @@ class SocioControlador
             );
         }
     }
+    public static function ctrAgregarSocioHome($cta)
+    {
+        // PREGUNTAR SI ES UN CORREO 
+        if (!socioControlador::is_valid_email($cta['scs_correo'])) {
+            return array(
+                'status' => false,
+                'mensaje' => '¡Escriba un correo valido!'
+            );
+        }
+
+        // Preguntar si ya existe el correo 
+        $isEmail = SocioModelo::mdlIssetSocioByEmail($cta['scs_correo']);
+
+        if ($isEmail) {
+            return array(
+                'status' => false,
+                'mensaje' => 'Este correo ya esta siendo usado por otro socio'
+            );
+        }
+        $ctas_cta = date("ymdHis");
+        // $ctas_id_padre = $_SESSION['session_usr']['scs_id'];
+        $ctas_id_padre = $cta['scs_id'];
+        $scs_token = base64_encode(uniqid());
+
+        $ctas_p = 0;
+        if (isset($cta['scs_p'])) {
+            $ctas_p = 1;
+        }
+
+        $scs_correo = $cta['scs_correo'];
+        $scs_wsp = $cta['scs_cp'] . '' . $cta['scs_wp'];
+        $scs_telefono = $scs_wsp;
+
+        $datos = array(
+            'ctas_cta' => $ctas_cta,
+            'ctas_id_padre' => $ctas_id_padre,
+            'scs_token' => $scs_token,
+            'ctas_p' => $ctas_p,
+            'scs_wsp' => $scs_wsp,
+            'scs_telefono' => $scs_telefono,
+            'scs_cuenta' => $ctas_cta,
+            'scs_correo' => $scs_correo,
+            'scs_perfil' => 'Socio Administrador'
+        );
+        $createToCta = SocioModelo::mdlAgregarCuenta($datos);
+        if ($createToCta) {
+            $createSocio = SocioModelo::mdlAgregarSocio($datos);
+            if ($createSocio) {
+                $correo = SocioControlador::ctrEnviarCorreoVerificacion(array(
+                    'usr_correo' => $cta['scs_correo'],
+                    'usr_token' => $scs_token,
+                    'url_base' => $cta['url_base']
+                ));
+                return array(
+                    'status' => true,
+                    'mensaje' => 'Socio dado de alta',
+                    'token' => $scs_token,
+                    'wp' => $scs_wsp
+                );
+            } else {
+                return array(
+                    'status' => true,
+                    'mensaje' => 'No se pudo registrar a este socio, intantalo de nuevo',
+                );
+            }
+        } else {
+            return array(
+                'status' => true,
+                'mensaje' => 'No se pudo registrar la cuenta, intantalo de nuevo',
+            );
+        }
+    }
 
     public static function ctrTerminarRegistro()
     {
@@ -95,7 +165,8 @@ class SocioControlador
 
         return array(
             'status' => true,
-            'mensaje' => 'Registro completado'
+            'mensaje' => 'Registro completado',
+            'pagina' => './system'
         );
     }
 
