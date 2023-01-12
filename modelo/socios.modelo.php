@@ -221,7 +221,6 @@ class SocioModelo
                 $sql = "SELECT * FROM tbl_sucursales_scl";
                 $con = Conexion::conectar();
                 $pps = $con->prepare($sql);
-                $pps->bindParam(1, $scl_cuenta);
                 $pps->execute();
                 return $pps->fetchAll();
             } // Todos
